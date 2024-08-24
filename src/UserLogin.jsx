@@ -1,36 +1,25 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const UserLogin = () => {
-  const sampleData = {
-    userName: "",
-    email: "",
-    password: ""
-  }
-  const [userInfo, setUserInfo] = useState(sampleData)
-
+  const [data, setData] = useState({ username: '', Password: '' })
+  const { username, Password } = data
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setUserInfo({ ...userInfo, [name]: value })
-    console.log(userInfo)
+    setData({ ...data, [e.target.name]: e.target.value })
 
   }
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert("user : " + username + " Password : " + Password)
+  }
   return (
-    <form className="">
-      <div className="flex-col p-10"><h1 className="text-center p-2 font-bold">UserLogin</h1>
-        <div className="p-40 m-40 w-150 shadow-lg rounded-lg  bg-violet-950">
-          <div className="m-auto text-center w-8/12 p-4"><span className="text-left m-auto p-4 text-white">Username</span>
-            <input type="text" name="userName" placeholder="enter your name" className="align-baseline" value={userInfo.userName} onChange={handleChange}></input>
-          </div>
-          <div className="m-auto text-center w-8/12 p-4">
-            <span className="m-auto px-8 text-left  text-white">Email</span>
-            <input type="email" name="email" placeholder="enter your mail" className="align-baseline" value={userInfo.email} onChange={handleChange} ></input>
-          </div>
-          <div className="m-auto text-center w-8/12 p-4">
-            <span className="m-auto p-4 text-left  text-white">Password</span>
-            <input type="password" name="password" placeholder="enter your password" className="align-baseline" value={userInfo.password} onChange={handleChange}></input>
-          </div>
-        </div>
+    <form onSubmit={handleSubmit} className="border-2 w-screen h-screen p-2 m-2 bg">
+      <h1 className='text-xl font-bold text-center'>Login Form</h1>
+      <div className=' bg-black w-2/12 pl-6 pt-8 pb-6 text-white rounded-xl m-auto mt-20'>
+        <h3 className='pb-3'><label>Username</label></h3>
+        <input className='text-black' type='text' name='username' value={username} onChange={handleChange} />
+        <h3 className='pt-2 pb-2'><label>Password</label></h3>
+        <input className='text-black' type='password' name='Password' value={Password} onChange={handleChange} /><br />
+        <input className='border-s-white pt-2 pb-2 pr-1 border-2 mt-4 mb-2 rounded-lg' type='submit' name='Submit' />
       </div>
     </form>
   )

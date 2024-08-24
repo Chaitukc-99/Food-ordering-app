@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const resInfoSlice = createSlice({
     name: "resInfo",
     initialState: {
-        items: [],
+        items: []
     },
 
     reducers: {
-        addItem: (state, action) => {
+        addItems: (state, action) => {
             state.items.push(action.payload)
         }
     }
 })
 
-export const { addItem } = resInfoSlice.actions;
+export const { addItems } = resInfoSlice.actions;
 export default resInfoSlice.reducer;
